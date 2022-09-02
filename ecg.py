@@ -12,7 +12,7 @@ from azure.iot.device import IoTHubDeviceClient, Message
 CONNECTION_STRING = "HostName=IotProjectEcg.azure-devices.net;DeviceId=IOT;SharedAccessKey=dIPmzJZPtbko32OxxYHCfo/Naqyz699lU/ljQejwpug="
 
 # Define the JSON message to send to IoT Hub.
-HEART RATE = 6.0
+HEART_RATE = 6.0
 BP1 = 120.0
 PRESSURE = 20.0
 PRESSURE1 = 60
@@ -30,7 +30,7 @@ def iothub_client_telemetry_sample_run():
         print ( "IoT Hub device sending periodic messages, press Ctrl-C to exit" )
         while True:
             # Build the message with simulated telemetry values.
-            Heart Rate = HEART RATE + (random.random() * 15)
+            Heart_Rate = HEART_RATE + (random.random() * 15)
             BP1 = BP + (random.random() * 15)
             pressure = PRESSURE + (random.random() * 15)
             pressure1 = PRESSURE1 + (random.random() * 20)
