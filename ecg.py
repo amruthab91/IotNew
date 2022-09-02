@@ -13,10 +13,10 @@ CONNECTION_STRING = "HostName=IotProjectEcg.azure-devices.net;DeviceId=IOT;Share
 
 # Define the JSON message to send to IoT Hub.
 HEART RATE = 6.0
-BP = 120.0
+BP1 = 120.0
 PRESSURE = 20.0
 PRESSURE1 = 60
-MSG_TXT = '{{"pressure": {pressure},"pressure1": {pressure1},"Heart Rate": {heart rate},"BP": {BP},}}'
+MSG_TXT = '{{"pressure": {pressure},"pressure1": {pressure1},"Heart Rate": {heart rate},"BP1": {bp1},}}'
 
 def iothub_client_init():
     # Create an IoT Hub client
@@ -31,10 +31,10 @@ def iothub_client_telemetry_sample_run():
         while True:
             # Build the message with simulated telemetry values.
             Heart Rate = HEART RATE + (random.random() * 15)
-            BP = BP + (random.random() * 15)
+            BP1 = BP + (random.random() * 15)
             pressure = PRESSURE + (random.random() * 15)
             pressure1 = PRESSURE1 + (random.random() * 20)
-            msg_txt_formatted = MSG_TXT.format(pressure=pressure, pressure1=pressure1,Heart Rate=heart rate,BP=BP)
+            msg_txt_formatted = MSG_TXT.format(pressure=pressure, pressure1=pressure1,Heart Rate=Heart Rate,BP=BP1)
             message = Message(msg_txt_formatted)
 
             # Add a custom application property to the message.
