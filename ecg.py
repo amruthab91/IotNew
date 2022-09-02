@@ -12,11 +12,11 @@ from azure.iot.device import IoTHubDeviceClient, Message
 CONNECTION_STRING = "HostName=IotProjectEcg.azure-devices.net;DeviceId=IOT;SharedAccessKey=dIPmzJZPtbko32OxxYHCfo/Naqyz699lU/ljQejwpug="
 
 # Define the JSON message to send to IoT Hub.
-HEART_RATE = 6.0
-BP1 = 120.0
-PRESSURE = 20.0
-PRESSURE1 = 60
-MSG_TXT = '{{"pressure": {pressure},"pressure1": {pressure1},"Heart Rate": {heart rate},"BP1": {bp1},}}'
+BP = 5.0
+PULSE = 0.5
+PRESSURE = 2
+PRESSURE1 = 6.5
+MSG_TXT = '{{"BP": {BP},"PULSE": {PULSE},"PRESSURE":{PRESSURE},"PRESSURE1": {PRESSURE1}}}'
 
 def iothub_client_init():
     # Create an IoT Hub client
@@ -30,19 +30,19 @@ def iothub_client_telemetry_sample_run():
         print ( "IoT Hub device sending periodic messages, press Ctrl-C to exit" )
         while True:
             # Build the message with simulated telemetry values.
-            Heart_Rate = HEART_RATE + (random.random() * 15)
-            BP1 = BP + (random.random() * 15)
-            pressure = PRESSURE + (random.random() * 15)
-            pressure1 = PRESSURE1 + (random.random() * 20)
-            msg_txt_formatted = MSG_TXT.format(pressure=pressure, pressure1=pressure1,Heart Rate=Heart Rate,BP=BP1)
+            bp = BP + (random.random() * 15)
+            pulse = PULSE + (random.random() * 15)
+            pressure= PRESSURE + (random.random() * 15)
+            pressure1 =PRESSURE1 + (random.random() * 15)
+            msg_txt_formatted = MSG_TXT.format(bp=bp, pulse=pulse,pressure=pressure , pressure1=pressure1)
             message = Message(msg_txt_formatted)
 
             # Add a custom application property to the message.
             # An IoT hub can filter on these properties without access to the message body.
-            #if pressure > 40:
-              #message.custom_properties["pressureAlert"] = "true"
+            #if temperature > 30:
+              #message.custom_properties["temperatureAlert"] = "true"
             #else:
-              #message.custom_properties["pressureAlert"] = "false"
+              #message.custom_properties["temperatureAlert"] = "false"
 
             # Send the message.
             print( "Sending message: {}".format(message) )
